@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue</title>
+	<link rel="stylesheet" href="./css/styles.css">
+	<script src="./js/bundle.js"></script>
+</head>
+<h1>Currency Converter</h1>
+<body>
+
+<div id="app">
+    <!--If we put all this in a <form> we would need a way to stop the form reloading.  -->
+	 <h3>Please enter an amount to be converted:</h3>
+	 <input placeholder="Amount" type="number" name="forConversion" v-model.number="forConversion"/>
+
+  <select v-model="baseCurrency">
+    <!--Have to use this in select, value of <option> doesn't change.  -->
+    <option v-for="rate, key in currencies" v-bind:value="key">{{ key }}</option>
+      <!--Alternative way to do this:  -->
+  </select>
+	 <button v-on:click="calculateAmount">Calculate Amount</button>
+   <p v-if="result">Your result is {{result | twoDecimPlaces}} {{baseCurrency}}</p>
+
+
+</div>
+
+
+</body>
+</html>
